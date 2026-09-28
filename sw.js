@@ -1,16 +1,18 @@
 const CACHE_NAME = 'takt-shell-v1';
+const APP_BASE_URL = self.registration.scope;
 const APP_SHELL = [
-  '/',
-  '/index.html',
-  '/styles.css',
-  '/src/domain.js',
-  '/src/storage.js',
-  '/src/app.js',
-  '/manifest.webmanifest',
-  '/icon-192.png',
-  '/icon-512.png',
-  '/icon.svg',
-];
+  '',
+  'index.html',
+  'styles.css',
+  'src/domain.js',
+  'src/storage.js',
+  'src/app.js',
+  'manifest.webmanifest',
+  'icon-192.png',
+  'icon-512.png',
+  'icon.svg',
+].map((path) => new URL(path, APP_BASE_URL).href);
+const APP_INDEX_URL = new URL('index.html', APP_BASE_URL).href;
 
 self.addEventListener('install', (event) => {
   event.waitUntil(caches.open(CACHE_NAME).then((cache) => cache.addAll(APP_SHELL)).then(() => self.skipWaiting()));
@@ -33,7 +35,7 @@ self.addEventListener('fetch', (event) => {
         void caches.open(CACHE_NAME).then((cache) => cache.put(request, copy));
       }
       return response;
-    }).catch(() => caches.match('/index.html'));
+    }).catch(() => caches.match(APP_INDEX_URL));
   }));
 });
 
@@ -41,6 +43,6 @@ self.addEventListener('notificationclick', (event) => {
   event.notification.close();
   event.waitUntil(self.clients.matchAll({ type: 'window', includeUncontrolled: true }).then((clients) => {
     const existing = clients.find((client) => 'focus' in client);
-    return existing ? existing.focus() : self.clients.openWindow('/');
+    return existing ? existing.focus() : self.clients.openWindow(APP_BASE_URL);
   }));
 });

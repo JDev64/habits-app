@@ -16,6 +16,8 @@ import { readState, writeState } from './storage.js';
 let state = readState();
 let installPromptEvent = null;
 let serviceWorkerRegistration = null;
+const appBaseUrl = new URL('../', import.meta.url).href;
+const notificationIconUrl = new URL('../icon-192.png', import.meta.url).href;
 let toastTimeout = 0;
 
 const $ = (selector, root = document) => root.querySelector(selector);
@@ -400,11 +402,11 @@ async function toggleReminders(enabled) {
 async function sendReminder(habit) {
   const options = {
     body: `Heute ist ${habit.name} geplant: ${habit.criteria || 'dein selbst gewähltes Ziel'}.`,
-    icon: '/icon-192.png',
-    badge: '/icon-192.png',
+    icon: notificationIconUrl,
+    badge: notificationIconUrl,
     tag: `takt-${today()}`,
     renotify: false,
-    data: { url: '/' },
+    data: { url: appBaseUrl },
   };
   try {
     if (serviceWorkerRegistration?.showNotification) await serviceWorkerRegistration.showNotification('Ein Moment für dich', options);
@@ -478,7 +480,7 @@ render();
 checkReminder();
 window.setInterval(checkReminder, 30_000);
 if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/sw.js').then((registration) => {
+  navigator.serviceWorker.register('./sw.js').then((registration) => {
     serviceWorkerRegistration = registration;
     checkReminder();
   }).catch(() => {
