@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="theme-color" content="#f5f4ef">
+    <meta name="description" content="Dein ruhiger Ort für kleine, regelmäßige Gewohnheiten. Offline, privat und ganz in deinem Tempo.">
+    <link rel="manifest" href="/manifest.webmanifest">
+    <link rel="icon" href="/icon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/icon-192.png">
+    <link rel="stylesheet" href="/styles.css">
+    <title>Takt — Dein eigener Rhythmus</title>
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <a class="brand" href="#oben" aria-label="Takt – zur Übersicht">
+          <span class="brand-mark" aria-hidden="true">
+            <svg viewBox="0 0 36 36" fill="none"><path d="M18 5.2v4.2M18 26.6v4.2M5.2 18h4.2m17.2 0h4.2M8.95 8.95l2.98 2.98m12.14 12.14 2.98 2.98m0-18.1-2.98 2.98m-12.14 12.14-2.98 2.98" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="18" cy="18" r="6.3" fill="currentColor"/></svg>
+          </span>
+          <span class="brand-copy"><strong>Takt</strong><small>DEIN EIGENER RHYTHMUS</small></span>
+        </a>
+        <div class="topbar-actions">
+          <span class="privacy-note"><span class="privacy-dot"></span> Nur auf diesem Gerät</span>
+          <button class="button button-quiet install-button" type="button" data-action="install" hidden>App installieren</button>
+          <button class="button button-quiet export-button" type="button" data-action="export">
+            <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 2.5v9m0 0 3.5-3.5M10 11.5 6.5 8M3.5 12.5v3h13v-3"/></svg>
+            <span>Daten sichern</span>
+          </button>
+        </div>
+      </header>
+
+      <main id="oben">
+        <section class="welcome-row" aria-labelledby="welcome-title">
+          <div>
+            <p class="eyebrow" id="today-label"></p>
+            <h1 id="welcome-title">Ein kleiner Schritt<br><em>zählt.</em></h1>
+            <p class="welcome-copy">Du musst heute nicht alles schaffen. Nur das, was du dir vorgenommen hast.</p>
+          </div>
+          <div class="welcome-sun" aria-hidden="true">
+            <span class="sun-orbit orbit-one"></span><span class="sun-orbit orbit-two"></span>
+            <span class="sun-core"></span><span class="sun-spark spark-one">✳</span><span class="sun-spark spark-two">✳</span>
+          </div>
+        </section>
+
+        <section class="dashboard-top" aria-label="Dein heutiger Fokus und Wochenfortschritt">
+          <article class="focus-card" id="focus-card" aria-live="polite"></article>
+          <article class="week-card" aria-labelledby="week-title">
+            <div class="card-heading">
+              <div><p class="eyebrow">DEIN WOCHENBLICK</p><h2 id="week-title">In deinem Tempo</h2></div>
+              <span class="week-count" id="week-count"></span>
+            </div>
+            <div class="week-progress-track"><span id="week-progress-fill"></span></div>
+            <div class="week-days" id="week-days" role="list" aria-label="Fortschritt von Montag bis Sonntag"></div>
+            <p class="week-caption" id="week-caption"></p>
+          </article>
+        </section>
+
+        <section class="content-grid">
+          <section class="habits-section" id="gewohnheiten" aria-labelledby="habits-title">
+            <div class="section-heading">
+              <div><p class="eyebrow">KLEINE ROUTINEN, DIE DIR GUTTUN</p><h2 id="habits-title">Deine Gewohnheiten</h2></div>
+              <button class="button button-dark add-button" type="button" data-action="add">
+                <span aria-hidden="true">＋</span> Gewohnheit hinzufügen
+              </button>
+            </div>
+            <div class="habit-list" id="habit-list"></div>
+          </section>
+
+          <aside class="side-column">
+            <article class="insight-card" aria-labelledby="insight-heading">
+              <div class="card-icon insight-icon" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M16 4.5v4m0 15v4M4.5 16h4m15 0h4M7.9 7.9l2.8 2.8m10.6 10.6 2.8 2.8m0-16.2-2.8 2.8m-10.6 10.6-2.8 2.8"/><circle cx="16" cy="16" r="5.2"/></svg></div>
+              <p class="eyebrow">DEIN BLICK AUF DIE WOCHE</p>
+              <h2 id="insight-heading">Was gerade gut läuft</h2>
+              <p id="insight-copy" class="insight-copy"></p>
+            </article>
+            <article class="tip-card" aria-labelledby="tip-heading">
+              <div class="tip-topline"><span class="tip-star" aria-hidden="true">✳</span><span class="eyebrow">EIN KLEINER IMPULS</span></div>
+              <h2 id="tip-heading">Für deinen nächsten Einstieg</h2>
+              <p id="tip-copy"></p>
+              <span class="tip-footnote">Ein Gedanke für heute, kein Muss.</span>
+            </article>
+          </aside>
+        </section>
+
+        <section class="settings-section" id="einstellungen" aria-labelledby="settings-title">
+          <div class="settings-heading"><div><p class="eyebrow">GANZ BEI DIR</p><h2 id="settings-title">Erinnerung &amp; Datenschutz</h2></div><span class="local-badge"><span class="privacy-dot"></span> Privat gespeichert</span></div>
+          <div class="settings-row">
+            <div class="settings-copy"><strong>Eine sanfte Erinnerung am Tag</strong><p>Nur wenn heute etwas ansteht und noch offen ist. Die Prüfung läuft, solange Takt in deinem Browser geöffnet ist.</p></div>
+            <div class="reminder-controls">
+              <label class="switch-label" for="reminder-enabled"><span class="visually-hidden">Erinnerungen aktivieren</span><input id="reminder-enabled" type="checkbox"><span class="switch-track"></span></label>
+              <label class="visually-hidden" for="reminder-time">Erinnerungszeit</label>
+              <input class="time-input" id="reminder-time" type="time" value="19:00" disabled>
+            </div>
+          </div>
+          <div class="settings-row settings-row-last">
+            <div class="settings-copy"><strong>Deine Daten bleiben bei dir</strong><p>Gewohnheiten und Einträge werden nur in diesem Browser gespeichert. Du kannst jederzeit eine Sicherung herunterladen.</p></div>
+            <button class="button button-outline" type="button" data-action="export">Sicherung herunterladen</button>
+          </div>
+        </section>
+      </main>
+
+      <footer class="footer"><span>Ein Rhythmus, der zu dir passt.</span><span>Offline bereit · Ohne Konto · Ohne Punkte</span></footer>
+    </div>
+
+    <dialog class="habit-dialog" id="habit-dialog" aria-labelledby="dialog-title">
+      <form id="habit-form" method="dialog">
+        <div class="dialog-top"><div><p class="eyebrow">EIN ZIEL, DAS ZU DIR PASST</p><h2 id="dialog-title">Neue Gewohnheit</h2></div><button class="icon-button" type="button" data-action="close-dialog" aria-label="Schließen">×</button></div>
+        <input type="hidden" id="habit-id">
+        <label class="field-label" for="habit-name">Woran möchtest du dranbleiben?</label>
+        <input class="text-input" id="habit-name" name="name" maxlength="48" placeholder="Zum Beispiel: Gitarre üben" required>
+        <label class="field-label field-label-spaced" for="habit-criteria">Woran erkennst du, dass es zählt?</label>
+        <input class="text-input" id="habit-criteria" name="criteria" maxlength="120" placeholder="Zum Beispiel: Mindestens 10 Minuten spielen" required>
+        <p class="field-help">Wähle eine Einheit, die du auch an einem vollen Wochentag gut unterbringst — zum Beispiel 10 Minuten Gitarre statt „mehr üben“. Takt erhöht dein Ziel nicht automatisch.</p>
+        <fieldset class="schedule-fieldset">
+          <legend class="field-label">Dein Rhythmus</legend>
+          <div class="schedule-choice">
+            <label class="choice-card"><input type="radio" name="schedule-type" value="fixed" checked><span><strong>Feste Wochentage</strong><small>Ich weiß, an welchen Tagen es dran ist.</small></span></label>
+            <label class="choice-card"><input type="radio" name="schedule-type" value="flexible"><span><strong>Flexibel pro Woche</strong><small>Ich erreiche eine Anzahl irgendwann diese Woche.</small></span></label>
+          </div>
+          <div class="schedule-detail" id="fixed-days-detail">
+            <span class="field-label">An welchen Tagen?</span>
+            <div class="weekday-options" id="weekday-options">
+              <label><input type="checkbox" name="weekday" value="1" checked><span>Mo</span></label><label><input type="checkbox" name="weekday" value="2" checked><span>Di</span></label><label><input type="checkbox" name="weekday" value="3" checked><span>Mi</span></label><label><input type="checkbox" name="weekday" value="4" checked><span>Do</span></label><label><input type="checkbox" name="weekday" value="5" checked><span>Fr</span></label><label><input type="checkbox" name="weekday" value="6"><span>Sa</span></label><label><input type="checkbox" name="weekday" value="7"><span>So</span></label>
+            </div>
+            <p class="field-error" id="schedule-error" role="alert" hidden>Wähle mindestens einen Wochentag.</p>
+          </div>
+          <div class="schedule-detail" id="flexible-detail" hidden>
+            <label class="field-label" for="weekly-target">Wie oft pro Woche?</label>
+            <div class="target-select-wrap"><select id="weekly-target" class="text-input"><option value="1">1 Einheit</option><option value="2">2 Einheiten</option><option value="3">3 Einheiten</option><option value="4">4 Einheiten</option><option value="5">5 Einheiten</option><option value="6">6 Einheiten</option><option value="7">7 Einheiten</option></select><span aria-hidden="true">⌄</span></div>
+          </div>
+        </fieldset>
+        <div class="dialog-actions"><button class="button button-quiet" type="button" data-action="close-dialog">Abbrechen</button><button class="button button-dark" type="submit">Speichern</button></div>
+      </form>
+    </dialog>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <script type="module" src="/src/app.js"></script>
+  </body>
+</html>
